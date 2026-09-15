@@ -1,10 +1,133 @@
-c学习笔记
-##选择结构
-###1.if  
+# c学习笔记
+
+自动 25-3LZM的学习笔记
+
+## 框架
+
+```c
+#include <stdio.h>
+int main()//主函数
+{	
+    /*代码*/
+    return 0;
+}
+```
+
+
+
+## 输入与输出
+
+### 1.输入
+
+scanf()
+
+### 2.输出
+
+printf()
+
+```c
+#include <stdio.h>
+int main()
+{	
+    int money，a=100,c;
+   	printf("请输入您的购买商品的价格");
+    scanf("%d",&age);
+    c=a-money;
+    printf("找零%d\n",c);
+    return 0;
+}
+```
+
+
+
+## 选择结构
+
+### 1.if  
+
   if()
   {}
   else
   {}
-###2.switch
-  switch()
-  case 
+
+
+
+```c
+#include <stdio.h>
+int main()
+{
+    int age;
+    printf("请输入你的年龄");
+    scanf("%d\n",&age);
+    if(age>=18)
+        printf("你已经成年\n");
+    else
+        printf("你还未成年");
+        
+    return 0;
+}
+```
+
+
+
+
+
+### 2.switch
+
+  switch(表达式)
+  case [常量1]：
+
+​	[语句1]；break;
+
+case [常量2]:
+
+​	[语句2]；break;
+
+​	...
+
+default：
+
+​	[语句n]；break;
+
+```c
+#include <stdio.h>
+
+int main() 
+{
+    int year, month;
+
+    printf("请输入年份和月份：");
+    scanf("%d %d", &year, &month);
+
+    switch (month) 
+    {
+        case 1:
+        case 3:
+        case 5:
+        case 7:
+        case 8:
+        case 10:
+        case 12:
+            printf("31 天\n");
+            break;
+        case 4:
+        case 6:
+        case 9:
+        case 11:
+            printf("30 天\n");
+            break;
+        case 2:
+            if ((year % 4 == 0 && year % 100 != 0) || year % 400 == 0) 
+            {
+                printf("29 天\n");
+            } else {
+                printf("28 天\n");
+            }
+            break;
+        default:
+            printf("月份无效\n");
+            break;
+    }
+
+    return 0;
+}
+```
