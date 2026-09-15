@@ -1,2 +1,11 @@
 # C-
 自动 25-3LZM的学习笔记
+##选择结构
+###1.if  
+  if()
+  {}
+  else
+  {}
+###2.switch
+  switch()
+  case 
