@@ -1,0 +1,141 @@
+## 数组与指针入门
+### 数组
+#### 一维数组
+学生成绩的输入：
+```c
+#include <stdio.h>
+
+#define MAX_STUDENT 100   // 最多录入100个学生
+
+int main() {
+    int n, i;
+    float score[MAX_STUDENT];   // 一维数组，存放学生成绩
+
+    printf("请输入学生人数：");
+    scanf("%d", &n);
+
+    if (n <= 0 || n > MAX_STUDENT) {
+        printf("学生人数不合法！\n");
+        return 1;
+    }
+
+    // 循环录入成绩
+    for (i = 0; i < n; i++) {
+        printf("请输入第%d个学生的成绩：", i + 1);
+        scanf("%f", &score[i]);  
+    }
+
+    // 输出录入的成绩
+    printf("\n录入的成绩如下：\n");
+    for (i = 0; i < n; i++) {
+        printf("第%d个学生：%.1f\n", i + 1, score[i]);  // 编号从 1 开始
+    }
+
+    return 0;
+}
+```
+将十个数从小到大排下序
+```c
+#include <stdio.h>
+
+#define N 10   
+
+int main() {
+    int a[N];
+    int i, j, temp;
+
+    printf("请输入10个整数：\n");
+    for (i = 0; i < N; i++) {
+        printf("第%d个数：", i + 1);
+        scanf("%d", &a[i]);
+    }
+
+    // 冒泡排序：从小到大
+    for (i = 0; i < N - 1; i++) {
+        for (j = 0; j < N - 1 - i; j++) {
+            if (a[j] > a[j + 1]) {
+                temp = a[j];
+                a[j] = a[j + 1];
+                a[j + 1] = temp;
+            }
+        }
+    }
+
+    printf("\n从小到大排序后的结果：\n");
+    for (i = 0; i < N; i++) {
+        printf("%d ", a[i]);
+    }
+    printf("\n");
+
+    return 0;
+}
+```
+#### 多维数组
+一个2*3的数组：
+```c
+#include <stdio.h>
+int a[2][3];
+int main()
+{
+	a[2][3]={{1,2,3},{4,5,6}};
+	printf("%d",a[0][2]);
+}
+return 0;
+```
+字符串数组：
+```c
+#include <stdio.h>
+char string[3]={'a','b','c'};
+char string1[]="abc"
+int main()
+{
+	printf("%d",string[2]);
+	printf("%d",string1[2]);
+}
+return 0;
+```
+### 指针
+int *p;
+    声明一个指针变量 p，它用来存放 int 类型变量的地址。
+&a
+    & 是取地址运算符，&a 就是变量 a 的地址。
+p = &a;
+    把 a 的地址存到 p 里，也就是说：p 指向了 a。
+*p
+     是解引用运算符，表示“访问 p 指向的那个变量”。
+
+eg:
+
+```c
+#include <stdio.h>
+int main() {
+    int a = 10;     // 普通变量，里面存 10
+    int *p;         // 指针变量，用来存地址
+
+    p = &a;         // &a 表示取 a 的地址，让 p 指向 a
+
+    printf("a 的值 = %d\n", a);
+    printf("*p 的值 = %d\n", *p);   // *p 表示取出 p 指向的值
+
+    *p = 99;        // 通过指针修改 a 的值
+
+    printf("修改后 a = %d\n", a);
+
+    return 0;
+}
+```
+数组指针：
+```c
+#include <stdio.h>
+
+int main() {
+    int arr[3] = {11, 22, 33};
+    int *p = arr;   // 数组名 arr 相当于首元素地址 &arr[0]
+
+    printf("%d\n", *p);       // 11
+    printf("%d\n", *(p + 1)); // 22
+    printf("%d\n", *(p + 2)); // 33
+
+    return 0;
+}
+```
